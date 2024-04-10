@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roller</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .dice-container {
+            width: 350px;
+            height: 400px;
+            margin: 60px auto;
+            background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            border-radius: 20px;
+        }
+
+        .app-heading {
+            margin-left: 100px;
+            padding-top: 10px;
+        }
+
+        .dice-img {
+            width: 200px;
+            height: 200px;
+            margin-left: 80px;
+            display: block;
+        }
+
+        .btn {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 10px;
+            margin-left: 130px;
+            margin-top: 30px;
+        }
+        @keyframes roll {
+            0% {
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+
+            }   
+        }
+        .aminate {
+            animation: 1s infinite;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="dice-container">
+        <h1 class="app-heading">Dice Roller</h1>
+        <img src="random.png" class="dice-img aminate" id="diceimg" alt="dice">
+        <button class="btn" onclick="roll()">dice roller</button>
+    </div>
+
+
+    <script>
+        function roll() {
+            const min = 1;
+            const max = 6;
+            const random = Math.round(Math.random() * (max - 1) + min);
+            switch (random) {
+                case 1:
+                    diceimg.src = "one.png"
+                    break;
+                case 2:
+                    diceimg.src = "two.png"
+                    break;
+                case 3:
+                    diceimg.src = "three.png"
+                    break;
+                case 4:
+                    diceimg.src = "four.png"
+                    break;
+
+                case 5:
+                    diceimg.src = "five.png"
+                    break;
+
+                case 6:
+                    diceimg.src = "six.png"
+                    break;
+
+                
+
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
