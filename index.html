@@ -7,15 +7,16 @@
     <title>Dice Roller</title>
     <style>
         body {
-            background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            height: 88vh;
+            background-image: linear-gradient( 171.8deg, rgba(5, 111, 146, 1) 13.5%, rgba(6, 57, 84, 1) 78.6%);
         }
 
         .dice-container {
             width: 350px;
             height: 400px;
             margin: 60px auto;
-            background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
             border-radius: 20px;
+            background-image: radial-gradient(circle 1224px at 10.6% 8.8%, rgba(255, 255, 255, 1) 0%, rgba(153, 202, 251, 1) 100.2%);
         }
 
         .app-heading {
@@ -24,39 +25,68 @@
         }
 
         .dice-img {
-            width: 200px;
-            height: 200px;
-            margin-left: 80px;
+            width: 260px;
+            height: 260px;
+            margin-left: 50px;
             display: block;
         }
 
         .btn {
+            border: none;
             font-size: 16px;
-            padding: 10px;
+            padding: 12px;
             border-radius: 10px;
             margin-left: 130px;
-            margin-top: 30px;
+            margin-top: 20px;
+            background-image: radial-gradient(circle 386px at 0% 62.1%, rgba(16, 224, 254, 1) 0%, rgba(15, 19, 196, 1) 100.7%);
+            cursor: pointer;
         }
+
         @keyframes roll {
             0% {
                 transform: rotate(0deg);
             }
-            100%{
-                transform: rotate(360deg);
 
-            }   
+            100% {
+                transform: rotate(360deg);
+            }
         }
-        .aminate {
-            animation: 1s infinite;
+
+        .animate {
+            animation: roll 1s infinite;
         }
-        
+
+        @media screen and (max-width: 600px) {
+            .dice-container {
+                width: 90%;
+                margin: 30px auto;
+            }
+
+            .app-heading {
+                margin-left: 0;
+                text-align: center;
+            }
+
+            .dice-img {
+                width: 150px;
+                height: 150px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn {
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="dice-container">
         <h1 class="app-heading">Dice Roller</h1>
-        <img src="random.png" class="dice-img aminate" id="diceimg" alt="dice">
+        <img src="random.png" class="dice-img " id="diceimg" alt="dice">
         <button class="btn" onclick="roll()">dice roller</button>
     </div>
 
@@ -66,6 +96,7 @@
             const min = 1;
             const max = 6;
             const random = Math.round(Math.random() * (max - 1) + min);
+            const diceimg = document.getElementById('diceimg');
             switch (random) {
                 case 1:
                     diceimg.src = "one.png"
@@ -79,21 +110,19 @@
                 case 4:
                     diceimg.src = "four.png"
                     break;
-
                 case 5:
                     diceimg.src = "five.png"
                     break;
-
                 case 6:
                     diceimg.src = "six.png"
                     break;
-
-                
-
             }
+            diceimg.classList.add('animate');
 
+            setTimeout(() => {
+                diceimg.classList.remove('animate');
+            }, 1000);
         }
-
     </script>
 </body>
 
